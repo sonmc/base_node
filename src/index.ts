@@ -1,21 +1,11 @@
-import 'reflect-metadata';
 import Koa from 'koa';
 import Router from '@koa/router';
 import routes from 'route';
 import { createConnection } from 'typeorm';
-import { User } from 'infrastructure/schemas/user.schema';
+import dataSourceOptions from 'infrastructure/framework/typeorm.config';
 
 const app = new Koa();
-createConnection({
-    type: 'mysql',
-    host: 'localhost',
-    port: 3306,
-    username: 'root',
-    password: '123456',
-    database: 'test_db',
-    entities: [User],
-    synchronize: false,
-})
+createConnection(dataSourceOptions)
     .then(async () => {
         const router = new Router({
             prefix: '/api',

@@ -3,7 +3,6 @@ import { Service } from 'typedi';
 import { UserEntity } from './entity/user.entity';
 import { plainToInstance } from 'class-transformer';
 
-@Service()
 export class UserService {
     userRepo: UserRepository;
     constructor() {

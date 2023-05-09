@@ -1,5 +1,5 @@
 import * as Koa from 'koa';
-import login, { LoginFlow } from './login.flow';
+import { LoginFlow } from './login.flow';
 import { AuthService } from 'services/auth/auth.service';
 
 async function loginCtrl(ctx: Koa.Context, _next: Koa.Next) {

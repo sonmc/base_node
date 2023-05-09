@@ -1,13 +1,16 @@
-import { User } from 'infrastructure/schemas/user.schema';
+import { ConnectionOptions } from 'typeorm';
 
-const dataSource = {
+const dataSourceOptions: ConnectionOptions = {
     type: 'mysql',
     host: 'localhost',
     port: 3306,
     username: 'root',
     password: '123456',
     database: 'test_db',
-    entities: [User],
     synchronize: false,
+    logging: true,
+    entities: ['src/infrastructure/schemas/*.ts'],
+    migrations: ['src/infrastructure/migrations/*.ts'],
 };
-export default dataSource;
+
+export default dataSourceOptions;
