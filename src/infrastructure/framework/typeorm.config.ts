@@ -1,6 +1,6 @@
 import { ConnectionOptions } from 'typeorm';
 
-const dataSourceOptions: ConnectionOptions = {
+export const dataSourceOptions: ConnectionOptions = {
     type: 'mysql',
     host: 'localhost',
     port: 3306,
@@ -9,7 +9,7 @@ const dataSourceOptions: ConnectionOptions = {
     database: 'z8l_tool',
     synchronize: false,
     logging: true,
-    entities: ['src/infrastructure/schemas/*.ts'],
+    entities: ['src/infrastructure/schemas/*.schema.ts'],
     migrations: ['src/infrastructure/migrations/*.ts'],
 };
 

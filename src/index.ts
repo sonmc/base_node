@@ -2,7 +2,7 @@ import Koa from 'koa';
 import Router from '@koa/router';
 import { get_routes, post_routes, delete_routes } from 'route';
 import { createConnection } from 'typeorm';
-import dataSourceOptions from 'infrastructure/framework/typeorm.config';
+import dataSourceOptions from './infrastructure/framework/typeorm.config';
 import bodyParser from 'koa-bodyparser';
 require('dotenv').config();
 
