@@ -1,13 +1,14 @@
+import 'reflect-metadata';
 import Koa from 'koa';
 import Router from '@koa/router';
 import { get_routes, post_routes, delete_routes } from 'route';
 import { createConnection } from 'typeorm';
-import dataSourceOptions from 'infrastructure/framework/typeorm.config';
 import bodyParser from 'koa-bodyparser';
+import appDataSource from 'infrastructure/framework/typeorm.config';
 require('dotenv').config();
 
 const app = new Koa();
-createConnection(dataSourceOptions)
+createConnection(appDataSource)
     .then(async () => {
         const router = new Router({
             prefix: '/api',

@@ -1,13 +1,12 @@
 {
     "name": "structure_base",
     "version": "1.0.0",
-    "main": "./src/index.ts",
+    "main": "./src/app.ts",
     "license": "MIT",
     "scripts": {
         "start:dev": "nodemon",
         "start:debug": "npm run start --debug --watch",
-        "build": "rimraf ./build && tsc",
-        "start": "node ./bin/www"
+        "build": "rimraf ./build && tsc"
     },
     "devDependencies": {
         "@types/bcrypt": "^5.0.0",
