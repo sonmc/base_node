@@ -1,5 +1,5 @@
 import { AuthService } from "services/auth/auth.service";
-import { generateToken } from "services/bcrypt.service";
+import { generateToken } from "utils/bcrypt.util";
 
 export class LoginFlow {
   private authService: AuthService;

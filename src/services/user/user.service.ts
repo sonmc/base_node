@@ -1,7 +1,7 @@
 import { UserRepository } from 'infrastructure/repository/user.repository';
 import { UserEntity } from './entity/user.entity';
 import { plainToInstance } from 'class-transformer';
-import { compare, getUserByToken } from 'services/bcrypt.service';
+import { compare, getUserByToken } from 'utils/bcrypt.util';
 
 export class UserService {
     userRepo: UserRepository;

@@ -1,4 +1,4 @@
-import { generateToken } from 'services/bcrypt.service';
+import { generateToken } from 'utils/bcrypt.util';
 import { UserService } from 'services/user/user.service';
 
 export class RefreshTokenFlow {
