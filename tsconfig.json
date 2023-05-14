@@ -9,7 +9,7 @@
             "@schema/*": ["./src/infrastructure/schemas/*"],
             "@services/*": ["./src/infrastructure/services/*"],
             "@infrastructure/*": ["./src/infrastructure/*"],
-            "@util/*": ["./src/util/*"]
+            "@utils/*": ["./src/utils/*"]
         },
         "resolveJsonModule": true,
         "allowJs": true,

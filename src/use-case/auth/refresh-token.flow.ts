@@ -9,9 +9,7 @@ export class RefreshTokenFlow {
     async refreshToken(refresh_token: string) {
         const user = await this.userService.getUser(refresh_token);
         const payload = { username: user.username };
-        const secretKey = process.env.JWT_SECRET || '';
-        const expiresIn = process.env.JWT_EXPIRATION_TIME + 's';
-        const accessToken = await generateToken(payload, secretKey, expiresIn);
+        const accessToken = await generateToken(payload);
         return accessToken;
     }
 }

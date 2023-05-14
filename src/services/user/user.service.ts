@@ -1,7 +1,7 @@
-import { UserRepository } from 'infrastructure/repository/user.repository';
-import { UserEntity } from './entity/user.entity';
 import { plainToInstance } from 'class-transformer';
-import { compare, getUserByToken } from 'utils/bcrypt.util';
+import { UserRepository } from 'infrastructure/repositories/user.repository';
+import { UserEntity } from './entity/user.entity';
+import { compare, getUserNameByToken } from 'utils/bcrypt.util';
 
 export class UserService {
     userRepo: UserRepository;
@@ -13,7 +13,7 @@ export class UserService {
         return users.map((user) => plainToInstance(UserEntity, user));
     }
     async getUser(refresh_token: string) {
-        const username = getUserByToken(refresh_token);
+        const username = getUserNameByToken(refresh_token);
         console.log('user', username);
 
         const user = await this.userRepo.getUserByUsername(username);

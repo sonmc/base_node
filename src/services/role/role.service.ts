@@ -1,4 +1,4 @@
-import { RoleRepository } from 'infrastructure/repository/role.repository';
+import { RoleRepository } from 'infrastructure/repositories/role.repository';
 import { Role } from 'infrastructure/schemas/role.schema';
 
 export class RoleService {

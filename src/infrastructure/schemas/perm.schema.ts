@@ -12,8 +12,8 @@ export class Permission extends BaseSchema {
 
     @ManyToMany(() => Role, (role) => role.permissions)
     @JoinTable({
-        name: 'roles_pems',
-        joinColumn: { name: 'permission_id', referencedColumnName: 'id' },
+        name: 'roles_perms',
+        joinColumn: { name: 'perm_id', referencedColumnName: 'id' },
         inverseJoinColumn: { name: 'role_id' },
     })
     roles: Role[] | undefined;

@@ -1,13 +1,10 @@
 {
-    "license": "MIT",
-    "name": "structure_base",
+    "name": "trangnguyen",
     "version": "1.0.0",
     "main": "./src/index.ts",
-    "type": "module",
+    "license": "MIT",
     "scripts": {
-        "ts-node": "ts-node",
-        "start:dev": "nodemon",
-        "start:debug": "npm run start --debug --watch",
+        "dev": "nodemon",
         "build": "rimraf ./build && tsc",
         "start": "npm run build && node build/index.js",
         "migrate": "ts-node ./node_modules/typeorm/cli.js migration:run",
@@ -17,30 +14,38 @@
         "make-migration": "npx typeorm migration:create -n migrationName"
     },
     "devDependencies": {
-        "@babel/cli": "^7.21.5",
-        "@babel/preset-env": "^7.21.5",
         "@types/bcrypt": "^5.0.0",
+        "@types/cookie-parser": "^1.4.3",
+        "@types/cors": "^2.8.13",
+        "@types/express": "^4.17.11",
+        "@types/express-list-endpoints": "^6.0.0",
         "@types/jsonwebtoken": "^9.0.2",
         "@types/koa": "^2.13.5",
-        "@types/koa__router": "^12.0.0",
         "@types/koa-bodyparser": "^4.3.10",
-        "@types/node": "^18.16.6",
+        "@types/koa__router": "^12.0.0",
+        "@types/node": "^8.0.29",
         "nodemon": "^2.0.20",
         "rimraf": "^4.1.2",
-        "ts-node": "^10.9.1",
+        "ts-node": "3.3.0",
+        "ts-node-dev": "^1.1.6",
         "tsc": "^2.0.4",
         "tsconfig-paths": "^4.1.2",
-        "typescript": "^5.0.4"
+        "typescript": "3.3.3333"
     },
     "dependencies": {
         "@koa/router": "^12.0.0",
         "bcrypt": "^5.1.0",
         "class-transformer": "^0.5.1",
+        "cookie-parser": "^1.4.6",
+        "cors": "^2.8.5",
         "dotenv": "^16.0.3",
+        "express": "^4.17.1",
+        "express-list-endpoints": "^6.0.0",
         "jsonwebtoken": "^9.0.0",
         "koa": "^2.14.1",
         "koa-bodyparser": "^4.4.0",
-        "reflect-metadata": "^0.1.13",
-        "typeorm": "^0.3.15"
+        "pg": "^8.6.0",
+        "reflect-metadata": "^0.1.10",
+        "typeorm": "0.2.32"
     }
 }

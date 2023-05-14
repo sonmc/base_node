@@ -23,9 +23,9 @@ export class Role extends BaseSchema {
         eager: true,
     })
     @JoinTable({
-        name: 'roles_pems',
+        name: 'roles_perms',
         joinColumn: { name: 'role_id', referencedColumnName: 'id' },
-        inverseJoinColumn: { name: 'permission_id' },
+        inverseJoinColumn: { name: 'perm_id' },
     })
     permissions: Permission[] | undefined;
 }
