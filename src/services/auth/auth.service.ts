@@ -1,6 +1,5 @@
 import { UserRepository } from 'infrastructure/repository/user.repository';
-import { compare, hash } from 'services/bcrypt.service';
-import { UserEntity } from 'services/user/entity/user.entity';
+import { compare, hash } from 'services/bcrypt.service'; 
 
 export class AuthService {
     userRepo: UserRepository;

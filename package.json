@@ -7,7 +7,12 @@
         "start:dev": "nodemon",
         "start:debug": "npm run start --debug --watch",
         "build": "rimraf ./build && tsc",
-        "start": "node ./bin/www"
+        "start": "npm run build && node build/index.js",
+        "migrate": "ts-node ./node_modules/typeorm/cli.js migration:run",
+        "revert": "ts-node ./node_modules/typeorm/cli.js migration:revert",
+        "generate": "ts-node ./node_modules/typeorm/cli.js migration:generate -n migration -p",
+        "generate-dry": "ts-node ./node_modules/typeorm/cli.js migration:generate -n migration -p --dr",
+        "make-migration": "npx typeorm migration:create -n migrationName"
     },
     "devDependencies": {
         "@types/bcrypt": "^5.0.0",
@@ -30,8 +35,7 @@
         "dotenv": "^16.0.3",
         "jsonwebtoken": "^9.0.0",
         "koa": "^2.14.1",
-        "koa-bodyparser": "^4.4.0",
-        "mysql2": "^3.3.0",
+        "koa-bodyparser": "^4.4.0", 
         "reflect-metadata": "^0.1.13",
         "typeorm": "^0.3.15"
     }

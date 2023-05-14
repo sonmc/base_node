@@ -5,7 +5,11 @@
         "module": "commonjs",
         "baseUrl": "src",
         "paths": {
-            "use-case/*": ["use-case/*"]
+            "use-case/*": ["use-case/*"],
+            "@schema/*": ["./src/infrastructure/schemas/*"],
+            "@services/*": ["./src/infrastructure/services/*"],
+            "@infrastructure/*": ["./src/infrastructure/*"],
+            "@util/*": ["./src/util/*"]
         },
         "resolveJsonModule": true,
         "allowJs": true,
