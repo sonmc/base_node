@@ -1,6 +1,7 @@
-import { Column, Entity, OneToMany, ManyToMany, JoinTable, Index } from 'typeorm';
+import { Column, Entity, OneToMany, ManyToMany, JoinTable, Index, BeforeInsert } from 'typeorm';
 import { Role } from './role.schema';
 import { BaseSchema } from './base.schema';
+import { hash } from 'services/bcrypt.service';
 
 @Entity({ name: 'users' })
 export class User extends BaseSchema {
@@ -66,4 +67,9 @@ export class User extends BaseSchema {
         inverseJoinColumn: { name: 'role_id' },
     })
     roles: Role[] | undefined;
+
+    @BeforeInsert()
+    async setPassword(password: string) {
+        this.password = await hash(password || this.password);
+    }
 }
