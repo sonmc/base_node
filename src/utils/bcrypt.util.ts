@@ -8,7 +8,7 @@ export async function compare(password: string, hashPassword: string): Promise<b
     return await bcrypt.compare(password, hashPassword);
 }
 
-export function generateToken(payload: any) {
+export function generateAccessToken(payload: any) {
     const secretKey = process.env.JWT_SECRET || '';
     const expiresIn = process.env.JWT_EXPIRATION_TIME + 's';
     return jwt.sign(payload, secretKey, { expiresIn: expiresIn });

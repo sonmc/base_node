@@ -1,4 +1,4 @@
-import { generateToken } from 'utils/bcrypt.util';
+import { compare, generateAccessToken } from 'utils/bcrypt.util';
 import { UserService } from 'services/user/user.service';
 
 export class RefreshTokenFlow {
@@ -7,10 +7,18 @@ export class RefreshTokenFlow {
         this.userService = _userService;
     }
     async refreshToken(refresh_token: string) {
-        const user = await this.userService.getUser(refresh_token);
-        const payload = { username: user.username };
-        const accessToken = await generateToken(payload);
-        return accessToken;
+        const { status, result } = await this.userService.getUser(refresh_token);
+        if (status === 'error') {
+            return { status, result: null };
+        }
+        const isRefreshTokenMatching = await compare(refresh_token, result.user.hash_refresh_token);
+        if (isRefreshTokenMatching) {
+            return { status, result: null };
+        }
+
+        const payload = { username: result.user.username };
+        const accessToken = await generateAccessToken(payload);
+        return { status, result: accessToken };
     }
 }
 

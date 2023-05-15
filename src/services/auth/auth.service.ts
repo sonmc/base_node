@@ -6,16 +6,6 @@ export class AuthService {
     constructor() {
         this.userRepo = new UserRepository();
     }
-    async login(username: string, password: string) {
-        const user = await this.userRepo.getUserByUsername(username);
-        const isMatched = await compare(password, user.password);
-        if (user && isMatched) {
-            await this.updateLoginTime(user.username);
-            const { password, ...result } = user;
-            return result;
-        }
-        return null;
-    }
 
     async updateLoginTime(username: string) {
         await this.userRepo.updateLastLogin(username);

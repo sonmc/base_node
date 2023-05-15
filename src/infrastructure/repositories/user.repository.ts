@@ -28,7 +28,7 @@ export class UserRepository extends BaseRepository<User> {
         );
     }
 
-    async getUserByUsername(username: string) {
+    async getUserByName(username: string) {
         const user = await this.entityManager.findOne({
             where: {
                 username: username,
