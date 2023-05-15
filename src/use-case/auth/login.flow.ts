@@ -19,10 +19,11 @@ export class LoginFlow {
         if (!isMatched) {
             return { status, result: {} };
         }
-        await this.authService.updateLoginTime(user.username);
+
         const payload = { id: user.id, username: user.username };
         const accessToken = await generateAccessToken(payload);
         const refreshToken = await generateRefreshToken(payload);
+        await this.authService.updateLoginTime(user.username);
         await this.authService.setRefreshToken(refreshToken, username);
         return { status: 'success', result: { accessToken, refreshToken } };
     }

@@ -1,18 +1,45 @@
-export function pagination(limit: number, cursor: number, data: any) {
-    let startIndex = 0;
-    const pageSize: number = limit;
-    if (cursor) {
-        const cursorIndex = data.findIndex((record: any) => record.id.toString() === cursor);
-        if (cursorIndex !== -1) {
-            startIndex = cursorIndex + 1;
-        }
+export function paginated(limit: number, page: number, data: any) {
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit;
+
+    const results = {
+        next: {},
+        previous: {},
+        data: {},
+    };
+
+    if (endIndex < data.length) {
+        results.next = {
+            page: page + 1,
+            limit: limit,
+        };
     }
 
-    const pageRecords = data.slice(startIndex, startIndex + pageSize);
-    const nextPageCursor = pageRecords.length > 0 ? pageRecords[pageRecords.length - 1].id.toString() : undefined;
+    if (startIndex > 0) {
+        results.previous = {
+            page: page - 1,
+            limit: limit,
+        };
+    }
+    results.data = data.find().limit(limit).skip(startIndex).exec();
+    return results;
+}
 
-    return {
-        records: pageRecords,
-        cursor: nextPageCursor,
-    };
+export function order(dataList: any, sortBy: keyof any, sortOrder: 'asc' | 'desc') {
+    const sortedData = [...dataList];
+
+    sortedData.sort((a, b) => {
+        let compareResult = 0;
+        if (a[sortBy] < b[sortBy]) {
+            compareResult = -1;
+        } else if (a[sortBy] > b[sortBy]) {
+            compareResult = 1;
+        }
+        if (sortOrder === 'desc') {
+            compareResult *= -1;
+        }
+        return compareResult;
+    });
+
+    return sortedData;
 }
