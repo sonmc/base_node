@@ -11,12 +11,12 @@ export class RefreshTokenFlow {
         if (status === 'error') {
             return { status, result: null };
         }
-        const isRefreshTokenMatching = await compare(refresh_token, result.user.hash_refresh_token);
+        const isRefreshTokenMatching = await compare(refresh_token, result.hash_refresh_token);
         if (isRefreshTokenMatching) {
             return { status, result: null };
         }
 
-        const payload = { username: result.user.username };
+        const payload = { username: result.username };
         const accessToken = await generateAccessToken(payload);
         return { status, result: accessToken };
     }

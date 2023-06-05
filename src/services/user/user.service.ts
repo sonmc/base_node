@@ -18,7 +18,7 @@ export class UserService {
             },
             relations: ['roles', 'roles.permissions'],
         });
-        return { status: 'success', result: user };
+        return { status: 'success', result: user || new User() };
     }
 
     async getUserByName(username: string) {
