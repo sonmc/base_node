@@ -1,5 +1,5 @@
 import { compare, generateAccessToken } from 'utils/bcrypt.util';
-import { UserService } from 'services/user/user.service';
+import { UserService } from 'service/user.service';
 
 export class RefreshTokenFlow {
     private userService: UserService;

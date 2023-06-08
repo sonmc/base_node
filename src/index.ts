@@ -6,11 +6,11 @@ import dataSource from 'infrastructure/config/data-source';
 import bodyParser from 'koa-bodyparser';
 
 const app = new Koa();
+const router = new Router({
+    prefix: '/api',
+});
 createConnection(dataSource)
     .then(async () => {
-        const router = new Router({
-            prefix: '/api',
-        });
         app.use(bodyParser());
         app.use(router.routes()).use(router.allowedMethods());
 
@@ -23,3 +23,22 @@ createConnection(dataSource)
         });
     })
     .catch((error: any) => console.log('TypeORM connection error:', error));
+
+function captureRouters() {
+    const routers: any[] = [];
+    router.stack.forEach((middleware: any) => {
+        if (middleware) {
+            if (middleware.methods && middleware.methods.length > 0) {
+                const routeHandler = middleware.stack[0];
+                routers.push({
+                    endpoint: middleware.path,
+                    funtion_name: routeHandler.name,
+                });
+            }
+        }
+    });
+
+    routers.forEach((path) => {
+        console.log(path);
+    });
+}

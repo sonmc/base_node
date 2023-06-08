@@ -1,7 +1,7 @@
 import * as Koa from 'koa';
-import { AuthService } from 'services/auth/auth.service';
+import { AuthService } from 'service/auth.service';
 
-import { UserService } from 'services/user/user.service';
+import { UserService } from 'service/user.service';
 import { AuthPresenter } from './login.presenter';
 import LoginFlow from './login.flow';
 

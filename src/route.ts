@@ -1,9 +1,9 @@
 import * as Koa from 'koa';
 import { getAll as getRoles } from 'use-case/role/role.ctrl';
-import { getAll as getUsers } from 'use-case/user/user.ctrl';
-import 'reflect-metadata';
+import { getAll as getUsers } from 'use-case/user/crud/user.ctrl';
 import { refreshToken } from 'use-case/auth/refresh-token/refresh-token.ctrl';
 import { login, logout } from 'use-case/auth/login/login.ctrl';
+import 'reflect-metadata';
 
 type RouteItem = {
     path: string;

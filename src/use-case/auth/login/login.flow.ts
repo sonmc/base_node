@@ -1,5 +1,5 @@
-import { AuthService } from 'services/auth/auth.service';
-import { UserService } from 'services/user/user.service';
+import { AuthService } from 'service/auth.service';
+import { UserService } from 'service/user.service';
 import { compare, generateAccessToken, generateRefreshToken } from 'utils/bcrypt.util';
 
 export class LoginFlow {

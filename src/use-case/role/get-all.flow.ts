@@ -1,4 +1,4 @@
-import { RoleService } from 'services/role/role.service';
+import { RoleService } from 'service/role.service';
 
 export class GetAllFlow {
     private roleService: RoleService;

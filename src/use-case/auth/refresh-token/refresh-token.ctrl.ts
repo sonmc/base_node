@@ -1,5 +1,5 @@
 import * as Koa from 'koa';
-import { UserService } from 'services/user/user.service';
+import { UserService } from 'service/user.service';
 import RefreshTokenFlow from './refresh-token.flow';
 
 export async function refreshToken(ctx: Koa.Context, _next: Koa.Next) {

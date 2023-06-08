@@ -1,5 +1,5 @@
 {
-    "name": "trangnguyen",
+    "name": "base_code",
     "version": "1.0.0",
     "main": "./src/index.ts",
     "license": "MIT",
@@ -11,14 +11,13 @@
         "revert": "ts-node ./node_modules/typeorm/cli.js migration:revert",
         "generate": "ts-node ./node_modules/typeorm/cli.js migration:generate -n migration -p",
         "generate-dry": "ts-node ./node_modules/typeorm/cli.js migration:generate -n migration -p --dr",
-        "make-migration": "npx typeorm migration:create -n migrationName"
+        "make-migration": "npx typeorm migration:create -n migrationName",
+        "cmd-sync-all-perms": "nodemon captureRouters.js"
     },
     "devDependencies": {
         "@types/bcrypt": "^5.0.0",
         "@types/cookie-parser": "^1.4.3",
         "@types/cors": "^2.8.13",
-        "@types/express": "^4.17.11",
-        "@types/express-list-endpoints": "^6.0.0",
         "@types/jsonwebtoken": "^9.0.2",
         "@types/koa": "^2.13.5",
         "@types/koa-bodyparser": "^4.3.10",
@@ -38,8 +37,6 @@
         "cookie-parser": "^1.4.6",
         "cors": "^2.8.5",
         "dotenv": "^16.0.3",
-        "express": "^4.17.1",
-        "express-list-endpoints": "^6.0.0",
         "jsonwebtoken": "^9.0.0",
         "koa": "^2.14.1",
         "koa-bodyparser": "^4.4.0",

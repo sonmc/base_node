@@ -2,8 +2,13 @@ import { User } from 'infrastructure/schemas/user.schema';
 import { getRepository } from 'typeorm';
 import { getUserNameByToken } from 'utils/bcrypt.util';
 
-export class UserService {
-    async getAll() {
+export interface IUser {
+    list(): any;
+    getUser(token: string): any;
+    getUserByName(name: string): any;
+}
+export class UserService implements IUser {
+    async list() {
         const userRepo = getRepository(User);
         const users = await userRepo.find();
         return { status: 'success', result: users };
