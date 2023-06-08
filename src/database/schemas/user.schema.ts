@@ -3,7 +3,7 @@ import { Role } from './role.schema';
 import { BaseSchema } from './base.schema';
 
 @Entity({ name: 'users' })
-export class User extends BaseSchema {
+export class UserSchema extends BaseSchema {
     @Column()
     @Index({ unique: true })
     username: string = '';

@@ -6,12 +6,10 @@
     "password": "123456",
     "database": "test_db3",
     "logging": false,
-    "entities": ["src/infrastructure/schemas/**/*.ts"],
-    "migrations": ["src/infrastructure/migration/**/*.ts"],
-    "subscribers": ["src/subscriber/**/*.ts"],
+    "entities": ["database/schemas/**/*.ts"],
+    "migrations": ["database/migration/**/*.ts"], 
     "cli": {
-        "entitiesDir": "src/infrastructure/schemas",
-        "migrationsDir": "src/infrastructure/migration",
-        "subscribersDir": "src/subscriber"
+        "entitiesDir": "database/schemas",
+        "migrationsDir": "database/migration"
     }
 }

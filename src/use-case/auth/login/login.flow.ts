@@ -1,3 +1,4 @@
+import { UserSchema } from 'schema/user.schema';
 import { AuthService } from 'service/auth.service';
 import { UserService } from 'service/user.service';
 import { compare, generateAccessToken, generateRefreshToken } from 'utils/bcrypt.util';
@@ -14,8 +15,8 @@ export class LoginFlow {
         if (status === 'error' || !result) {
             return { status, result: {} };
         }
-        const user = result;
-        const isMatched = await compare(password, result.password);
+        const user = result as UserSchema;
+        const isMatched = await compare(password, user.password);
         if (!isMatched) {
             return { status, result: {} };
         }

@@ -11,8 +11,8 @@ const dataSource: ConnectionOptions = {
     database: process.env.DB_NAME,
     synchronize: false,
     logging: true,
-    entities: ['src/infrastructure/schemas/*.ts'],
-    migrations: ['src/infrastructure/migrations/*.ts'],
+    entities: ['src/database/schemas/*.ts'],
+    migrations: ['src/database/migrations/*.ts'],
 };
 
 export default dataSource;

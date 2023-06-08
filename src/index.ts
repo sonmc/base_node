@@ -2,7 +2,7 @@ import Koa from 'koa';
 import Router from '@koa/router';
 import { get_routes, post_routes, delete_routes } from 'route';
 import { createConnection } from 'typeorm';
-import dataSource from 'infrastructure/config/data-source';
+import dataSource from 'database/config/data-source';
 import bodyParser from 'koa-bodyparser';
 
 const app = new Koa();

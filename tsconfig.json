@@ -6,10 +6,10 @@
         "baseUrl": "src",
         "paths": {
             "use-case/*": ["use-case/*"],
-            "@schema/*": ["./src/infrastructure/schemas/*"],
-            "@services/*": ["./src/infrastructure/services/*"],
-            "@infrastructure/*": ["./src/infrastructure/*"],
-            "@utils/*": ["./src/utils/*"]
+            "schema/*": ["database/schemas/*"],
+            "services/*": ["services/*"],
+            "database/*": ["database/*"],
+            "utils/*": ["utils/*"]
         },
         "resolveJsonModule": true,
         "allowJs": true,
