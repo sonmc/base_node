@@ -1,25 +1,26 @@
 {
     "compilerOptions": {
-        "target": "es2016",
+        "target": "ES2015",
         "lib": ["es6"],
         "module": "commonjs",
-        "baseUrl": "src",
-        "paths": {
-            "use-case/*": ["use-case/*"],
-            "schema/*": ["database/schemas/*"],
-            "services/*": ["services/*"],
-            "database/*": ["database/*"],
-            "utils/*": ["utils/*"]
-        },
+        "strict": true,
+        "esModuleInterop": true,
         "resolveJsonModule": true,
         "allowJs": true,
-        "outDir": "build",
-        "esModuleInterop": true,
+        "outDir": "dist",
         "forceConsistentCasingInFileNames": true,
-        "strict": true,
         "noImplicitAny": true,
         "skipLibCheck": true,
         "emitDecoratorMetadata": true,
-        "experimentalDecorators": true
-    }
+        "experimentalDecorators": true,
+        "sourceMap": true,
+        "baseUrl": "src"
+        // "paths": {
+        //     "@use-case/*": ["use-case/*"],
+        //     "@service/*": ["service/*"],
+        //     "@util/*": ["util/*"]
+        // }
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules"]
 }

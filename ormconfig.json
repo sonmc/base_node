@@ -1,15 +1,15 @@
 {
-    "type": "postgres",
-    "host": "localhost",
-    "port": 5432,
-    "username": "postgres",
-    "password": "123456",
-    "database": "test_db3",
+    "type": "mysql",
+    "host": "61.14.233.220",
+    "port": 3306,
+    "username": "admin",
+    "password": "123123123",
+    "database": "baongoc_db",
     "logging": false,
-    "entities": ["database/schemas/**/*.ts"],
-    "migrations": ["database/migration/**/*.ts"], 
+    "entities": ["src/service/schemas/**/*.ts"],
+    "migrations": ["src/database/migration/**/*.ts"],
     "cli": {
-        "entitiesDir": "database/schemas",
-        "migrationsDir": "database/migration"
+        "entitiesDir": "src/service/schemas",
+        "migrationsDir": "src/database/migration"
     }
 }
