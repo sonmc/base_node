@@ -1,5 +1,5 @@
 import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { RoleSchema } from './role.schema';
+import { GroupSchema } from './group.schema';
 
 @Entity({ name: 'permissions' })
 export class PermSchema {
@@ -18,11 +18,11 @@ export class PermSchema {
     @Column()
     action: string = '';
 
-    @ManyToMany(() => RoleSchema, (role) => role.permissions)
+    @ManyToMany(() => GroupSchema, (group) => group.permissions)
     @JoinTable({
-        name: 'roles_perms',
+        name: 'groups_perms',
         joinColumn: { name: 'perm_id', referencedColumnName: 'id' },
-        inverseJoinColumn: { name: 'role_id' },
+        inverseJoinColumn: { name: 'group_id' },
     })
-    roles: RoleSchema[] | undefined;
+    groups: GroupSchema[] | undefined;
 }

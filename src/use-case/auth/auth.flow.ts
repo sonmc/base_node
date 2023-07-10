@@ -1,19 +1,19 @@
-import { UserSchema } from '../../service/schemas/user.schema';
-import { AuthService } from '../../service/auth.service';
-import { UserService } from '../../service/user.service';
-import { compare, generateAccessToken, generateRefreshToken, hash } from '../../util/bcrypt.util';
+import { IAuth } from '../../service/auth.service';
+import { IUser } from '../../service/user.service';
+import { compare, generateAccessToken, generateRefreshToken } from '../../util/bcrypt.util';
 
 export class AuthFlow {
-    private authService: AuthService;
-    private userService: UserService;
-    constructor(_authService: AuthService, _userService: UserService) {
+    private authService: IAuth;
+    private userService: IUser;
+    constructor(_authService: IAuth, _userService: IUser) {
         this.authService = _authService;
         this.userService = _userService;
     }
 
     async login(username: string, password: string) {
-        const user = await this.userService.getUser(username);
-        if (!user) {
+        const { status, result } = await this.userService.getByName(username);
+        const user = result;
+        if (status == 'error') {
             return { status: 'error', result: {} };
         }
 
@@ -31,8 +31,8 @@ export class AuthFlow {
     }
 
     async refreshToken(refresh_token: string) {
-        const user = await this.userService.getUser(refresh_token);
-
+        const { status, result } = await this.userService.getByName(refresh_token);
+        const user = result;
         const isRefreshTokenMatching = await compare(refresh_token, user.hash_refresh_token);
         if (isRefreshTokenMatching) {
             return { status: 'error', result: null };

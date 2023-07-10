@@ -6,11 +6,11 @@ async function seed() {
     try {
         const connection = await createConnection({
             type: 'mysql',
-            host: '61.14.233.220',
+            host: 'localhost',
             port: 3306,
-            username: 'admin',
-            password: '123123123',
-            database: 'baongoc_db',
+            username: 'root',
+            password: '123456',
+            database: 'Z8L_internal',
             entities: ['dist/service/schemas/**/*.js'],
         });
         const routers = [...get_routes, ...post_routes, ...delete_routes];

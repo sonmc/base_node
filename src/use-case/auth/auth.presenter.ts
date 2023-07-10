@@ -1,8 +1,7 @@
-import { Min, Max } from 'class-validator';
+import { Min } from 'class-validator';
 export class AuthPresenter {
-    @Min(0)
-    @Max(10)
-    username: string = '';
     @Min(1)
+    username: string = '';
+    @Min(6)
     password: string = '';
 }

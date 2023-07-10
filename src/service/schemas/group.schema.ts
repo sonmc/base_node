@@ -2,8 +2,8 @@ import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 't
 import { PermSchema } from './perm.schema';
 import { UserSchema } from './user.schema';
 
-@Entity({ name: 'roles' })
-export class RoleSchema {
+@Entity({ name: 'groups' })
+export class GroupSchema {
     @PrimaryGeneratedColumn()
     id: number = 0;
 
@@ -16,20 +16,20 @@ export class RoleSchema {
     @Column({ nullable: true })
     description: string = '';
 
-    @ManyToMany(() => UserSchema, (users) => users.roles)
+    @ManyToMany(() => UserSchema, (users) => users.groups)
     @JoinTable({
-        name: 'users_roles',
-        joinColumn: { name: 'role_id', referencedColumnName: 'id' },
+        name: 'users_groups',
+        joinColumn: { name: 'group_id', referencedColumnName: 'id' },
         inverseJoinColumn: { name: 'user_id' },
     })
     users: UserSchema[] | undefined;
 
-    @ManyToMany(() => PermSchema, (perm) => perm.roles, {
+    @ManyToMany(() => PermSchema, (perm) => perm.groups, {
         eager: true,
     })
     @JoinTable({
-        name: 'roles_perms',
-        joinColumn: { name: 'role_id', referencedColumnName: 'id' },
+        name: 'groups_perms',
+        joinColumn: { name: 'group_id', referencedColumnName: 'id' },
         inverseJoinColumn: { name: 'perm_id' },
     })
     permissions: PermSchema[] | undefined;

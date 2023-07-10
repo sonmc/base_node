@@ -1,9 +1,7 @@
 import { BeforeInsert, Column, Entity, ManyToMany, JoinTable, Index, ManyToOne, OneToMany } from 'typeorm';
 import { BaseSchema } from './base.schema';
-import { RoleSchema } from './role.schema';
+import { GroupSchema } from './group.schema';
 import { hash } from '../../util//bcrypt.util';
-import { DepartmentSchema } from './department.schema';
-import { WorkspaceSchema } from './workspace.schema';
 
 @Entity({ name: 'users' })
 export class UserSchema extends BaseSchema {
@@ -34,22 +32,11 @@ export class UserSchema extends BaseSchema {
         this.password = await hash(password || this.password);
     }
 
-    @ManyToOne(() => WorkspaceSchema, (p) => p.users)
-    workspace: WorkspaceSchema | undefined;
-
-    @ManyToMany(() => RoleSchema, (role: RoleSchema) => role.users)
+    @ManyToMany(() => GroupSchema, (role: GroupSchema) => role.users)
     @JoinTable({
         name: 'users_roles',
         joinColumn: { name: 'user_id', referencedColumnName: 'id' },
-        inverseJoinColumn: { name: 'role_id' },
+        inverseJoinColumn: { name: 'group_id' },
     })
-    roles?: RoleSchema[];
-
-    @ManyToMany(() => DepartmentSchema, (d) => d.users)
-    @JoinTable({
-        name: 'departments_users',
-        joinColumn: { name: 'user_id', referencedColumnName: 'id' },
-        inverseJoinColumn: { name: 'department_id' },
-    })
-    departments: DepartmentSchema[] | undefined;
+    groups?: GroupSchema[];
 }

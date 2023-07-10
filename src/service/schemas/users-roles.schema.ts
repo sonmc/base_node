@@ -4,14 +4,14 @@ import { Column, Entity, PrimaryColumn } from 'typeorm';
 export class UserRoleSchema {
     @Column()
     @PrimaryColumn()
-    role_id: Number;
+    group_id: Number;
 
     @Column()
     @PrimaryColumn()
     user_id: Number;
 
-    constructor(role_id: number, user_id: number) {
-        this.role_id = role_id;
+    constructor(group_id: number, user_id: number) {
+        this.group_id = group_id;
         this.user_id = user_id;
     }
 }
