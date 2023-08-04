@@ -3,6 +3,7 @@ import { PermSchema } from '../../service/schemas/perm.schema';
 import { GroupSchema } from '../../service/schemas/group.schema';
 import { UserSchema } from '../../service/schemas/user.schema';
 import { PASSWORD_DEFAULT } from '../../util/const.variable';
+import typeOrmConfig from 'database/typeorm.config';
 const admin = '[1]';
 const staff = '[2]';
 
@@ -10,15 +11,7 @@ const publicApi = '[]';
 async function seed() {
     try {
         console.log('seeding...');
-        const connection = await createConnection({
-            type: 'mysql',
-            host: 'localhost',
-            port: 3306,
-            username: 'root',
-            password: '123456',
-            database: 'Z8L_internal',
-            entities: ['dist/service/schemas/**/*.js'],
-        });
+        const connection = await createConnection(typeOrmConfig);
         await createGroup(connection);
         await createPerm(connection);
         await createUser(connection);

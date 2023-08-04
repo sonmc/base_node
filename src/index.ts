@@ -5,10 +5,10 @@ import { createConnection } from 'typeorm';
 import bodyParser from 'koa-bodyparser';
 import cors from '@koa/cors';
 import koaBody from 'koa-body';
-import AWS from 'aws-sdk';
-import { UserSchema } from './service/schemas/user.schema';
-import { PermSchema } from './service/schemas/perm.schema';
-import { GroupSchema } from './service/schemas/group.schema';
+import AWS from 'aws-sdk'; 
+import { koaSwagger } from 'koa2-swagger-ui';
+import koaSend from 'koa-send';
+import typeOrmConfig from "./database/typeorm.config"
 import 'reflect-metadata';
 
 const app = new Koa();
@@ -21,18 +21,23 @@ AWS.config.update({
     secretAccessKey: 'Ef64lh8+svK8+EJfsHbycvb7b49TnAmjLNUsfKc7',
 });
 
-createConnection({
-    type: 'mysql',
-    host: 'localhost',
-    port: 3306,
-    username: 'root',
-    password: '123456',
-    database: 'Z8l_internal',
-    logging: false,
-    entities: [UserSchema, PermSchema, GroupSchema],
-    migrations: ['src/database/migration/**/*.ts'],
-})
+createConnection(typeOrmConfig)
     .then(async () => {
+
+        app.use(koaSwagger({
+            swaggerOptions: {
+              url: '/swagger.json', // example path to json
+            },
+          }));
+          
+          app.use(async (ctx, next) => {
+            if (ctx.path === '/swagger.json') {
+              await koaSend(ctx, ctx.path);
+            } else {
+              await next();
+            }
+          });
+
         app.use(
             cors({
                 allowHeaders: ['Content-Type'],
