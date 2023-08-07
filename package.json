@@ -9,7 +9,6 @@
         "revert": "ts-node ./node_modules/typeorm/cli.js migration:revert",
         "generate": "ts-node ./node_modules/typeorm/cli.js migration:generate -n migration -p",
         "migrate": "ts-node ./node_modules/typeorm/cli.js migration:run",
-        "make-migration": "npx typeorm migration:create -n migrationName",
         "sync-all-router": "node dist/database/seed/sync_all_router.js",
         "seed": "node dist/database/seed/seeding.js"
     },
