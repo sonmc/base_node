@@ -1,6 +1,6 @@
 import { IUser } from '../../service/user.service';
 import { IDepartment } from '../../service/department.service';
-import { getUserNameByToken } from '../../util/bcrypt.util';
+import { getUserNameByToken } from '../../util/jwt.util';
 import { IDepartmentUser } from '../../service/department_user.service';
 import { PROFILE_TYPE } from '../../util/const.variable';
 export class DepartmentFlow {

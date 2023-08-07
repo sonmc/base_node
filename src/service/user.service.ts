@@ -1,7 +1,7 @@
 import { Any, getRepository } from 'typeorm';
 import { UserSchema } from './schemas/user.schema';
 import { ADMIN_ID, PASSWORD_DEFAULT, STATUS_INACTIVE, PROFILE_TYPE } from '../util/const.variable';
-import { hash } from '../util/bcrypt.util';
+import { hash } from '../util/jwt.util';
 import { UserRoleSchema } from './schemas/users-roles.schema';
 
 export interface IUser {

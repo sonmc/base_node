@@ -1,6 +1,6 @@
 import { UserSchema } from './schemas/user.schema';
 import { getRepository } from 'typeorm';
-import { hash } from '../util/bcrypt.util';
+import { hash } from '../util/jwt.util';
 
 export interface IAuth {
     updateLoginTime(username: string): any;

@@ -4,7 +4,7 @@ import { RolePermSchema } from '../../service/schemas/roles-perms.schema';
 import { RoleSchema } from '../../service/schemas/role.schema';
 import { UserSchema } from '../../service/schemas/user.schema';
 import { WorkspaceSchema } from '../../service/schemas/workspace.schema';
-import { hash } from '../../util/bcrypt.util';
+import { hash } from '../../util/jwt.util';
 const superAdmin = '[1]';
 const admin = '[2]';
 const admin_department = '[3]';

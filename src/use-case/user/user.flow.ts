@@ -1,5 +1,5 @@
 import { IUser } from '../../service/user.service';
-import { getUserNameByToken } from '../../util/bcrypt.util';
+import { getUserNameByToken } from '../../util/jwt.util';
 import { IWorkspace } from 'service/workspace.service';
 
 export class UserFlow {

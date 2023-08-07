@@ -1,7 +1,7 @@
 import { BeforeInsert, Column, Entity, ManyToMany, JoinTable, Index, ManyToOne, OneToMany } from 'typeorm';
 import { BaseSchema } from './base.schema';
 import { RoleSchema } from './role.schema';
-import { hash } from '../../util//bcrypt.util';
+import { hash } from '../../util/jwt.util';
 import { DepartmentSchema } from './department.schema';
 import { WorkspaceSchema } from './workspace.schema';
 

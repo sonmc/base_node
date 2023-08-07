@@ -1,4 +1,4 @@
-import { getUserNameByToken } from '../../util/bcrypt.util';
+import { getUserNameByToken } from '../../util/jwt.util';
 import { IDepartment } from '../../service/department.service';
 import { ITask } from '../../service/task.service';
 import { IUser } from '../../service/user.service';
