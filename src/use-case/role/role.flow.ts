@@ -1,12 +1,12 @@
-import { RoleService } from 'service/role.service';
+import { GroupService } from 'service/group.service';
 
 export class RoleFlow {
-    private roleService: RoleService;
-    constructor(_roleService: RoleService) {
-        this.roleService = _roleService;
+    private groupService: GroupService;
+    constructor(_groupService: GroupService) {
+        this.groupService = _groupService;
     }
     async getAll() {
-        const result = await this.roleService.getAll();
+        const result = await this.groupService.getAll();
         return result;
     }
 }

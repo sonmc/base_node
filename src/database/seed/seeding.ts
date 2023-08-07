@@ -1,31 +1,19 @@
 import { createConnection } from 'typeorm';
 import { PermSchema } from '../../service/schemas/perm.schema';
-import { RolePermSchema } from '../../service/schemas/roles-perms.schema';
-import { RoleSchema } from '../../service/schemas/role.schema';
+import { GroupSchema } from '../../service/schemas/group.schema';
 import { UserSchema } from '../../service/schemas/user.schema';
-import { WorkspaceSchema } from '../../service/schemas/workspace.schema';
-import { hash } from '../../util/jwt.util';
-const superAdmin = '[1]';
-const admin = '[2]';
-const admin_department = '[3]';
-const staff = '[10]';
+import { PASSWORD_DEFAULT } from '../../util/const.variable';
+import typeOrmConfig from 'database/typeorm.config';
+const admin = '[1]';
+const staff = '[2]';
 
 const publicApi = '[]';
 async function seed() {
     try {
         console.log('seeding...');
-        const connection = await createConnection({
-            type: 'mysql',
-            host: '61.14.233.220',
-            port: 3306,
-            username: 'admin',
-            password: '123123123',
-            database: 'baongoc_db',
-            entities: ['dist/service/schemas/**/*.js'],
-        });
+        const connection = await createConnection(typeOrmConfig);
         await createGroup(connection);
         await createPerm(connection);
-        await createWorkspace(connection);
         await createUser(connection);
         console.log('all data inserted');
         await connection.close();
@@ -36,77 +24,56 @@ async function seed() {
 
 async function createPerm(connection: any) {
     const permRepo = connection.getRepository(PermSchema);
-    const rolePermRepo = connection.getRepository(RolePermSchema);
     const perms = await permRepo.find();
-    const rolesPerms: any = [];
+    const groupsPerms: any = [];
     perms.forEach((perm: any) => {
-        if (perm.profile_types == superAdmin) {
+        if (perm.profile_types == admin) {
             const rolePerm = {
-                role_id: 1,
+                group_id: 1,
                 perm_id: perm.id,
             };
-            const rolePermCreated = rolePermRepo.create(rolePerm);
-            rolesPerms.push(rolePermCreated);
-        } else if (perm.profile_types == admin) {
+            groupsPerms.push(rolePerm);
+        } else if (perm.profile_types == staff) {
             const rolePerm = {
-                role_id: 2,
+                group_id: 2,
                 perm_id: perm.id,
             };
-            const rolePermCreated = rolePermRepo.create(rolePerm);
-            rolesPerms.push(rolePermCreated);
-        } else if (perm.profile_types == '[1,2]' || perm.profile_types == '[1,2,3]' || perm.profile_types == publicApi) {
+            groupsPerms.push(rolePerm);
+        } else if (perm.profile_types == '[1,2]' || perm.profile_types == '[1,2]' || perm.profile_types == publicApi) {
             const rolePerm = {
-                role_id: 1,
+                group_id: 1,
                 perm_id: perm.id,
             };
-            const rolePermCreated = rolePermRepo.create(rolePerm);
-            rolesPerms.push(rolePermCreated);
+            groupsPerms.push(rolePerm);
             const rolePerm2 = {
-                role_id: 2,
+                group_id: 2,
                 perm_id: perm.id,
             };
-            const rolePermCreated2 = rolePermRepo.create(rolePerm2);
-            rolesPerms.push(rolePermCreated2);
-
-            const rolePerm3 = {
-                role_id: 3,
-                perm_id: perm.id,
-            };
-            const rolePermCreated3 = rolePermRepo.create(rolePerm3);
-            rolesPerms.push(rolePermCreated3);
-        } else if (perm.profile_types == '[3]') {
-            const rolePerm = {
-                role_id: 3,
-                perm_id: perm.id,
-            };
-            const rolePermCreated = rolePermRepo.create(rolePerm);
-            rolesPerms.push(rolePermCreated);
+            groupsPerms.push(rolePerm2);
         }
     });
-    await rolePermRepo.save(rolesPerms);
+    const values = groupsPerms.map((groupPerm: any) => ({
+        group_id: groupPerm.group_id,
+        perm_id: groupPerm.perm_id,
+    }));
+    await connection.createQueryBuilder().insert().into('groups_perms').values(values).execute();
 }
 async function createGroup(connection: any) {
     const groups = [
         {
             id: 1,
-            title: 'Super Admin',
+            title: 'Admin',
             profile_type: 1,
             description: '',
         },
         {
             id: 2,
-            title: 'Admin',
+            title: 'Staff',
             profile_type: 2,
             description: '',
         },
-        {
-            id: 3,
-            title: 'Staff',
-            profile_type: 3,
-            description: '',
-        },
     ];
-    const groupRepo = connection.getRepository(RoleSchema);
+    const groupRepo = connection.getRepository(GroupSchema);
     const groupList: any = [];
     groups.forEach((g) => {
         const groupCreated = groupRepo.create(g);
@@ -115,31 +82,17 @@ async function createGroup(connection: any) {
     await groupRepo.save(groupList);
 }
 
-async function createWorkspace(connection: any) {
-    const workspace = {
-        id: 1,
-        title: 'admin workspace',
-        is_super: true,
-        des: '',
-    };
-    const workspaceRepo = connection.getRepository(WorkspaceSchema);
-    const workspaceCreated = await workspaceRepo.create(workspace);
-    await workspaceRepo.save(workspaceCreated);
-}
-
 async function createUser(connection: any) {
-    const workspaceRepo = connection.getRepository(WorkspaceSchema);
-    const workspace = await workspaceRepo.findOne(1);
-    const passDefault = await hash('123456');
+    const passDefault = PASSWORD_DEFAULT;
     const user = {
-        id: '1',
+        id: 1,
         username: 'admin',
         full_name: 'admin',
         is_owner: true,
-        group_ids: '[1]',
-        workspace: workspace,
+        group_ids: admin,
         password: passDefault,
     };
+
     const userRepo = connection.getRepository(UserSchema);
     const userCreated = await userRepo.create(user);
     await userRepo.save(userCreated);

@@ -1,12 +1,12 @@
 {
     "type": "mysql",
-    "host": "61.14.233.220",
+    "host": "localhost",
     "port": 3306,
-    "username": "admin",
-    "password": "123123123",
-    "database": "baongoc_db",
+    "username": "root",
+    "password": "123456",
+    "database": "base_core",
     "logging": false,
-    "entities": ["src/service/schemas/**/*.ts"],
+    "entities": ["dist/service/schemas/**/*.js"],
     "migrations": ["src/database/migration/**/*.ts"],
     "cli": {
         "entitiesDir": "src/service/schemas",

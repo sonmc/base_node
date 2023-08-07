@@ -13,19 +13,19 @@ export async function compare(password: string, hashPassword: string): Promise<b
 }
 
 export function generateAccessToken(payload: any) {
-    const secretKey = process.env.JWT_SECRET || '';
+    const secretKey = process.env.JWT_SECRET || '74YLbq4%c!wU ';
     const expiresIn = process.env.JWT_EXPIRATION_TIME + 's';
-    return jwt.sign(payload, secretKey, { expiresIn: expiresIn });
+    return jwt.sign(payload, secretKey, { expiresIn: '1d' });
 }
 
 export function generateRefreshToken(payload: any) {
-    const secretKeyRefreshToken = process.env.JWT_REFRESH_TOKEN_SECRET || '';
-    const expiresInForRefreshToken = process.env.JWT_REFRESH_TOKEN_EXPIRATION_TIME + 's';
-    return jwt.sign(payload, secretKeyRefreshToken, { expiresIn: expiresInForRefreshToken });
+    const secretKeyRefreshToken = process.env.JWT_REFRESH_TOKEN_SECRET || '7jML9q4-c!s0';
+    const expiresInForRefreshToken = 86400 + 's';
+    return jwt.sign(payload, secretKeyRefreshToken, { expiresIn: '3d' });
 }
 
 export function verify(token: string) {
-    const secretKey = process.env.JWT_SECRET || '';
+    const secretKey = process.env.JWT_SECRET || '74YLbq4%c!wU ';
     return jwt.verify(token, secretKey);
 }
 

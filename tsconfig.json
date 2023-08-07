@@ -21,6 +21,6 @@
         //     "@util/*": ["util/*"]
         // }
     },
-    "include": ["src/**/*"],
+    "include": ["src/**/*", "typeorm.config.ts"],
     "exclude": ["node_modules"]
 }
