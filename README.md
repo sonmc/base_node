@@ -39,3 +39,25 @@ Design decision The tradeoff of letting engine do prohibited things will take so
 Complexity only belongs to engines. Engines is the only places we consider when breaking out monolith system to service based one. It's convenient to work with. It's have no negative impact about changing requirements. It help us to deal with changing requirements with ease because with have more flexibility. Some drawback:
 
 It potential become big ball of mugs because it can do almost everything. So use / design it with care.
+
+# Project Structure
+├───src
+│   ├───business
+│   │   ├───logic
+│   │   └───rule
+│   ├───database
+│   │   ├───migration
+│   │   └───seed
+│   ├───service
+│   │   └───schemas
+│   ├───use-case
+│   │   ├───auth
+│   │   ├───file
+│   │   │   └───upload-file
+│   │   ├───role
+│   │   └───user
+│   │       ├───change-password
+│   │       ├───crud
+│   │       └───get-current
+│   └───util
+└───uploads
