@@ -6,7 +6,7 @@ $ npm run dev
 
 -   npm run generate
 -   npm run migrate 
-
+```
 # Project Structure
 ├───src
 │   ├───business
@@ -28,3 +28,4 @@ $ npm run dev
 │   │       └───get-current
 │   └───util
 └───uploads
+```
