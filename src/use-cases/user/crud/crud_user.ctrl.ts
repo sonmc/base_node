@@ -1,9 +1,9 @@
 import * as Koa from 'koa';
 import { UserService } from '../../../service/user.service';
 import UserFlow from './crud_user.flow';
-import { applySort, applyPagination, applySearch, applyFilter } from '../../../util/ctrl.util';
+import { applySort, applyPagination, applySearch, applyFilter } from '../../../utils/ctrl.util';
 import { CrudUserPresenter } from './crud_user.presenter';
-import { STATUS_400 } from '../../../util/const.variable';
+import { STATUS_400 } from '../../../utils/const.variable';
 import { userValidate } from './crud_user.validator';
 
 class CrudUserCtrl {

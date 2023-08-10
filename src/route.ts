@@ -5,7 +5,7 @@ import userCtrl from './use-case/user/crud/crud_user.ctrl';
 import uploadCtrl from './use-case/file/upload-file/upload.ctrl';
 import getCurrentCtrl from './use-case/user/get-current/get_current.ctrl';
 import changePasswordCtrl from './use-case/user/change-password/change_password.ctrl';
-import { PROFILE_TYPE } from './util/const.variable';
+import { PROFILE_TYPE } from './utils/const.variable';
 
 type RouteItem = {
     path: string;

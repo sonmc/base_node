@@ -1,6 +1,6 @@
 import * as Koa from 'koa';
 import { UserService } from '../../../service/user.service';
-import { ACCESS_TOKEN, INVALID_TOKEN } from '../../../util/const.variable';
+import { ACCESS_TOKEN, INVALID_TOKEN } from '../../../utils/const.variable';
 import GetCurrentUserFlow from './get-current.flow';
 import { GetCurrentUserPresenter } from './get-current.presenter';
 

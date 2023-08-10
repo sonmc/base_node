@@ -2,7 +2,7 @@ import { createConnection } from 'typeorm';
 import { PermSchema } from '../../service/schemas/perm.schema';
 import { GroupSchema } from '../../service/schemas/group.schema';
 import { UserSchema } from '../../service/schemas/user.schema';
-import { PASSWORD_DEFAULT } from '../../util/const.variable';
+import { PASSWORD_DEFAULT } from '../../utils/const.variable';
 import typeOrmConfig from 'database/typeorm.config';
 const admin = '[1]';
 const staff = '[2]';

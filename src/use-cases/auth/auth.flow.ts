@@ -2,7 +2,7 @@
 import { UserSchema } from '../../service/schemas/user.schema';
 import { AuthService } from '../../service/auth.service';
 import { UserService } from '../../service/user.service';
-import { compare, generateAccessToken, generateRefreshToken, hash } from '../../util/bcrypt.util';
+import { compare, generateAccessToken, generateRefreshToken, hash } from '../../utils/bcrypt.util';
 =======
 import { IAuth } from '../../service/auth.service';
 import { IUser } from '../../service/user.service';
