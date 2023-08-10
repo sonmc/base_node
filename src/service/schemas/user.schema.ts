@@ -1,5 +1,5 @@
 import { BeforeInsert, Column, Entity, ManyToMany, JoinTable, Index, ManyToOne, OneToMany } from 'typeorm';
-import { BaseSchema } from './base.schema';
+import { BaseSchema } from './base.schema'; 
 import { GroupSchema } from './group.schema';
 import { hash } from '../../util//bcrypt.util';
 

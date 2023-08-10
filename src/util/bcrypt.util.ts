@@ -1,6 +1,7 @@
+ 
 import * as bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-
+ 
 export async function hash(password: string): Promise<any> {
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);

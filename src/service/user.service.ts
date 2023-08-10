@@ -1,5 +1,5 @@
 import { getRepository } from 'typeorm';
-import { UserSchema } from './schemas/user.schema';
+import { UserSchema } from './schemas/user.schema'; 
 
 export interface IUser {
     list(): Promise<any>;

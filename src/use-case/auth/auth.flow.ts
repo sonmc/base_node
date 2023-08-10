@@ -1,6 +1,13 @@
+<<<<<<< HEAD
+import { UserSchema } from '../../service/schemas/user.schema';
+import { AuthService } from '../../service/auth.service';
+import { UserService } from '../../service/user.service';
+import { compare, generateAccessToken, generateRefreshToken, hash } from '../../util/bcrypt.util';
+=======
 import { IAuth } from '../../service/auth.service';
 import { IUser } from '../../service/user.service';
 import { compare, generateAccessToken, generateRefreshToken } from '../../util/bcrypt.util';
+>>>>>>> a36c45bc813165a6a86b48ab0f2c50761da6f414
 
 export class AuthFlow {
     private authService: IAuth;
