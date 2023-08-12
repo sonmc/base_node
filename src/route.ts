@@ -2,7 +2,6 @@ import * as Koa from 'koa';
 import roleCtrl from './use-case/role/role.ctrl';
 import authCtrl from './use-case/auth/auth.ctrl';
 import userCtrl from './use-case/user/crud/crud_user.ctrl';
-import uploadCtrl from './use-case/file/upload-file/upload.ctrl';
 import getCurrentCtrl from './use-case/user/get-current/get_current.ctrl';
 import changePasswordCtrl from './use-case/user/change-password/change_password.ctrl';
 import { PROFILE_TYPE } from './util/const.variable';
@@ -36,7 +35,6 @@ const get_routes: RouteItem[] = [
 
 const post_routes: RouteItem[] = [
     { name: '[]', path: '/auth/login', ctrl: authCtrl.login },
-    { name: '[]', path: '/upload', ctrl: uploadCtrl.upload },
     {
         name: JSON.stringify([PROFILE_TYPE.SUPPER_ADMIN, PROFILE_TYPE.ADMIN]),
         path: '/users',
