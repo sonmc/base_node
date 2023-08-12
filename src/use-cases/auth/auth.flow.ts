@@ -1,6 +1,7 @@
-import { IAuth } from '../../service/auth.service';
-import { IUser } from '../../service/user.service';
-import { compare, generateAccessToken, generateRefreshToken } from '../../util/bcrypt.util';
+import { IAuth } from '../../services/auth.service';
+import { compare, generateAccessToken, generateRefreshToken, hash } from '../../utils/bcrypt.util';
+import { IUser } from '../../services/user.service';
+
 
 export class AuthFlow {
     private authService: IAuth;

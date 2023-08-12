@@ -1,10 +1,11 @@
 import * as Koa from 'koa';
-import roleCtrl from './use-case/role/role.ctrl';
-import authCtrl from './use-case/auth/auth.ctrl';
-import userCtrl from './use-case/user/crud/crud_user.ctrl';
-import getCurrentCtrl from './use-case/user/get-current/get_current.ctrl';
-import changePasswordCtrl from './use-case/user/change-password/change_password.ctrl';
-import { PROFILE_TYPE } from './util/const.variable';
+
+import { PROFILE_TYPE } from './utils/const.variable';
+import get_currentCtrl from 'use-cases/user/get-current/get_current.ctrl';
+import authCtrl from 'use-cases/auth/auth.ctrl';
+import roleCtrl from 'use-cases/role/role.ctrl';
+import userCtrl from 'use-cases/user/crud/crud_user.ctrl';
+import changePasswordCtrl from 'use-cases/user/change-password/change_password.ctrl';
 
 type RouteItem = {
     path: string;
@@ -16,7 +17,7 @@ const get_routes: RouteItem[] = [
     {
         name: '[]',
         path: '/users/get-current-user',
-        ctrl: getCurrentCtrl.get,
+        ctrl: get_currentCtrl.get,
     },
     { name: '[]', path: '/auth/refresh-token', ctrl: authCtrl.refreshToken },
     { name: '[]', path: '/auth/logout', ctrl: authCtrl.logout },

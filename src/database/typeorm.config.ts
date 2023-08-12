@@ -1,6 +1,6 @@
-import { GroupSchema } from "../service/schemas/group.schema";
-import { PermSchema } from "../service/schemas/perm.schema";
-import { UserSchema } from "../service/schemas/user.schema";
+import { GroupSchema } from "../services/schemas/group.schema";
+import { PermSchema } from "../services/schemas/perm.schema";
+import { UserSchema } from "../services/schemas/user.schema";
 import { ConnectionOptions } from "typeorm";
 
 const typeOrmConfig: ConnectionOptions = {

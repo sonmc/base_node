@@ -1,9 +1,9 @@
 import * as Koa from 'koa';
-import { UserService } from '../../../service/user.service';
-import { ACCESS_TOKEN, INVALID_TOKEN } from '../../../util/const.variable';
+import { ACCESS_TOKEN, INVALID_TOKEN } from '../../../utils/const.variable';
 import ChangePasswordFlow from './change_password.flow';
+import { UserService } from '../../../services/user.service';
 
-class CrudUserCtrl {
+class ChangePasswordCtrl {
     async changePassword(ctx: Koa.Context, _next: Koa.Next) {
         const access_token = ctx.cookies.get(ACCESS_TOKEN) || '';
         if (!access_token) {
@@ -23,4 +23,4 @@ class CrudUserCtrl {
     }
 }
 
-export default new CrudUserCtrl();
+export default new ChangePasswordCtrl();

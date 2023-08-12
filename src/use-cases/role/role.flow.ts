@@ -1,4 +1,4 @@
-import { GroupService } from 'service/group.service';
+import { GroupService } from '../../services/group.service';
 
 export class RoleFlow {
     private groupService: GroupService;

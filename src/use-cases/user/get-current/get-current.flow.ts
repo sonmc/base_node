@@ -1,5 +1,6 @@
-import { IUser } from '../../../service/user.service';
-import { getUserNameByToken } from '../../../util/bcrypt.util';
+
+import { IUser } from '../../../services/user.service';
+import { getUserNameByToken } from '../../../utils/bcrypt.util';
 
 export class GetCurrentUserFlow {
     private userService: IUser;
