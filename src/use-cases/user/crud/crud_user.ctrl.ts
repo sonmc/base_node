@@ -19,9 +19,11 @@ class CrudUserCtrl {
         const response = CrudUserPresenter.presentList(result);
         if (status === 'success') {
             ctx.body = response;
+            return;
         } else {
             ctx.status = 400;
             ctx.body = STATUS_400;
+            return;
         }
     }
 
@@ -32,13 +34,16 @@ class CrudUserCtrl {
         if (validation.status == 'error') {
             ctx.status = 400;
             ctx.body = STATUS_400;
+            return;
         }
         const { status, result } = await flow.create(user);
         if (status == 'error') {
             ctx.status = 400;
             ctx.body = STATUS_400;
+            return;
         }
         ctx.body = { status, result };
+        return;
     }
 
     async delete(ctx: Koa.Context, _next: Koa.Next) {
@@ -48,9 +53,11 @@ class CrudUserCtrl {
         if (status == 'error') {
             ctx.status = 400;
             ctx.body = STATUS_400;
+            return;
         }
         ctx.status = 200;
         ctx.body = result;
+        return;
     }
 }
 

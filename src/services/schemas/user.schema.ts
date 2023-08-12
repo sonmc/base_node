@@ -7,10 +7,7 @@ import { hash } from '../../utils/bcrypt.util';
 export class UserSchema extends BaseSchema {
     @Column()
     @Index({ unique: true })
-    username: string = '';
-
-    @Column()
-    is_owner: boolean = false;
+    username: string = ''; 
 
     @Column()
     group_ids: string = '';

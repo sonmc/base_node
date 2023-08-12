@@ -3,7 +3,8 @@ import { PermSchema } from '../../services/schemas/perm.schema';
 import { GroupSchema } from '../../services/schemas/group.schema';
 import { UserSchema } from '../../services/schemas/user.schema';
 import { PASSWORD_DEFAULT } from '../../utils/const.variable';
-import typeOrmConfig from 'database/typeorm.config';
+import typeOrmConfig from '../../database/typeorm.config';
+
 const admin = '[1]';
 const staff = '[2]';
 
@@ -87,8 +88,7 @@ async function createUser(connection: any) {
     const user = {
         id: 1,
         username: 'admin',
-        full_name: 'admin',
-        is_owner: true,
+        full_name: 'admin', 
         group_ids: admin,
         password: passDefault,
     };

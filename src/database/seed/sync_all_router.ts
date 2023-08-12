@@ -1,7 +1,8 @@
-import { PermSchema } from '../../services/schemas/perm.schema';
+ 
 import { get_routes, post_routes, delete_routes } from '../../route';
 import { createConnection } from 'typeorm';
-import typeOrmConfig from 'database/typeorm.config';
+import typeOrmConfig from '../../database/typeorm.config';
+import { PermSchema } from '../../services/schemas/perm.schema';
 
 async function seed() {
     try {
