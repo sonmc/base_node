@@ -1,7 +1,7 @@
 import Koa from "koa";
 
-import { verify } from "utils/bcrypt.util";
-import { getPublicApi } from "utils/ctrl.util";
+import { verify } from "../utils/bcrypt.util";
+import { getPublicApi } from "../utils/ctrl.util";
 
 export class AuthMiddleware {
   public static async checkAuth(
