@@ -1,14 +1,14 @@
 import { GroupService } from "../../../services/core/group.service";
 
-export class RoleFlow {
+export class GroupFlow {
   private groupService: GroupService;
   constructor(_groupService: GroupService) {
     this.groupService = _groupService;
   }
   async getAll() {
-    const result = await this.groupService.getAll();
+    const result = await this.groupService.findAll();
     return result;
   }
 }
 
-export default RoleFlow;
+export default GroupFlow;

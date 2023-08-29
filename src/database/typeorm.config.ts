@@ -10,7 +10,7 @@ const typeOrmConfig: ConnectionOptions = {
   port: 3306,
   username: "root",
   password: "123456",
-  database: "base_core_v3",
+  database: "base_core_v6",
   logging: false,
   entities: [UserSchema, PermSchema, GroupSchema, UserGroupSchema],
   migrations: ["src/database/migrations/**/*.ts"],

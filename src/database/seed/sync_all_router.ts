@@ -6,6 +6,7 @@ import { PermSchema } from "../../services/schemas/core/perm.schema";
 async function seed() {
   try {
     const connection = await createConnection(typeOrmConfig);
+
     const routers = [...get_routes, ...post_routes, ...delete_routes];
     const permRepo = connection.getRepository(PermSchema);
     const permissions: any = [];

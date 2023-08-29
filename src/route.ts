@@ -2,10 +2,10 @@ import * as Koa from "koa";
 
 import { PROFILE_TYPE } from "./utils/const.variable";
 import authCtrl from "./use-cases/core/auth/auth.ctrl";
-import get_currentCtrl from "./use-cases/core/user/get-current/get_current.ctrl";
-import roleCtrl from "./use-cases/core/role/role.ctrl";
+import get_currentCtrl from "./use-cases/core/user/get-current/get_current.ctrl"; 
 import crud_userCtrl from "./use-cases/core/user/crud/crud_user.ctrl";
 import change_passwordCtrl from "./use-cases/core/user/change-password/change_password.ctrl";
+import groupCtrl from "./use-cases/core/group/group.ctrl";
 
 type RouteItem = {
   path: string;
@@ -24,7 +24,7 @@ const get_routes: RouteItem[] = [
   {
     name: JSON.stringify([PROFILE_TYPE.ADMIN]),
     path: "/roles",
-    ctrl: roleCtrl.list,
+    ctrl: groupCtrl.list,
   },
 
   {

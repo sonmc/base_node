@@ -9,13 +9,10 @@ import { UserSchema } from "../../../../services/schemas/core/user.schema";
 import { STATUS_400 } from "../../../../utils/const.variable";
 
 class CrudUserCtrl {
-  flow: any;
-  constructor() {
-    this.flow = new UserFlow(new UserService(getRepository(UserSchema)));
-  }
   async list(ctx: Koa.Context, _next: Koa.Next) {
     const { limit, page } = ctx.request.body as CrudUserPresenter;
-    let { status, result } = await this.flow.list();
+    const flow = new UserFlow(new UserService(getRepository(UserSchema)));
+    let { status, result } = await flow.list();
     let query = applySort("id", "desc", result);
     // query = applySearch('id', 'desc', query);
     // query = applyFilter('id', 'desc', query);
@@ -40,7 +37,8 @@ class CrudUserCtrl {
       ctx.body = STATUS_400;
       return;
     }
-    const { status, result } = await this.flow.create(user);
+    const flow = new UserFlow(new UserService(getRepository(UserSchema)));
+    const { status, result } = await flow.create(user);
     if (status == "error") {
       ctx.status = 400;
       ctx.body = STATUS_400;
@@ -52,7 +50,8 @@ class CrudUserCtrl {
 
   async delete(ctx: Koa.Context, _next: Koa.Next) {
     const ids = ctx.request.body as number[];
-    const [status, result] = await this.flow.delete(ids);
+    const flow = new UserFlow(new UserService(getRepository(UserSchema)));
+    const [status, result] = await flow.delete(ids);
     if (status == "error") {
       ctx.status = 400;
       ctx.body = STATUS_400;

@@ -1,14 +1,11 @@
+import { BaseService, IBaseService } from "../../services/base.service";
 import { GroupSchema } from "../../services/schemas/core/group.schema";
-import { getRepository } from "typeorm";
+import { Repository } from "typeorm";
 
-export interface IGroup {
-  getAll(): Promise<GroupSchema[]>;
-}
+export interface IGroup extends IBaseService<GroupSchema> {}
 
-export class GroupService implements IGroup {
-  async getAll(): Promise<any> {
-    const groupRepo = getRepository(GroupSchema);
-    const groups = await groupRepo.find();
-    return { status: "success", result: groups };
+export class GroupService extends BaseService<GroupSchema> {
+  constructor(private readonly groupRepo: Repository<GroupSchema>) {
+    super(groupRepo);
   }
 }
