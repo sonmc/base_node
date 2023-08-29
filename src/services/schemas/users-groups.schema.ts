@@ -1,7 +1,7 @@
 import { Column, Entity, PrimaryColumn } from 'typeorm';
 
-@Entity({ name: 'users_roles' })
-export class UserRoleSchema {
+@Entity({ name: 'users_groups' })
+export class UserGroupSchema {
     @Column()
     @PrimaryColumn()
     group_id: Number;
