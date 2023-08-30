@@ -10,8 +10,7 @@ export interface IBaseService<T> {
   create(entity: T): Promise<any>;
   update(entity: T): Promise<any>;
   findOne(id: number): Promise<any>;
-  delete(id: number): Promise<any>;
-  deletes(ids: any): Promise<any>;
+  delete(ids: number[]): Promise<any>;
 }
 
 @EntityRepository()
@@ -40,16 +39,8 @@ export abstract class BaseService<TEntity extends ObjectLiteral>
     return { status: "success", result };
   }
 
-  async delete(id: number): Promise<any> {
-    const entity = await this.repository.findOne(id);
-    if (!entity) {
-      return undefined;
-    }
-    const result = await this.repository.remove(entity);
+  async delete(ids: number[]): Promise<any> {
+    const result = await this.repository.delete(ids);
     return { status: "success", result };
-  }
-
-  deletes(ids: any): Promise<any> {
-    throw new Error("Method not implemented.");
   }
 }
