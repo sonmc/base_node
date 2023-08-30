@@ -24,9 +24,9 @@ export function generateRefreshToken(payload: any) {
     return jwt.sign(payload, secretKeyRefreshToken, { expiresIn: '3d' });
 }
 
-export function verify(token: string) {
+export async function verify(token: string): Promise<any> {
     const secretKey = process.env.JWT_SECRET || '74YLbq4%c!wU ';
-    return jwt.verify(token, secretKey);
+    return await jwt.verify(token, secretKey);
 }
 
 export function getUserNameByToken(token: string): string {

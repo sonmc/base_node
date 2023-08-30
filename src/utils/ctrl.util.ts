@@ -1,3 +1,4 @@
+
 export function getPublicApi() {
   return ["auth/login", "auth/logout"];
 }
