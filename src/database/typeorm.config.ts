@@ -6,11 +6,11 @@ import { ConnectionOptions } from "typeorm";
 
 const typeOrmConfig: ConnectionOptions = {
   type: "mysql",
-  host: "localhost",
+  host: process.env.DB_HOST,
   port: 3306,
-  username: "root",
-  password: "123456",
-  database: "base_core_v6",
+  database: process.env.DB_NAME,
+  username: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
   logging: false,
   entities: [UserSchema, PermSchema, GroupSchema, UserGroupSchema],
   migrations: ["src/database/migrations/**/*.ts"],

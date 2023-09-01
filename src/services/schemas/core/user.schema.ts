@@ -6,7 +6,7 @@ import {
   JoinTable,
   Index,
 } from "typeorm";
-import { BaseSchema } from "./base.schema";
+import { BaseSchema } from "../base.schema";
 import { GroupSchema } from "./group.schema";
 import { hash } from "../../../utils/bcrypt.util";
 

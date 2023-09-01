@@ -10,7 +10,7 @@ export interface IBaseService<T> {
   create(entity: T): Promise<any>;
   update(entity: T): Promise<any>;
   findOne(id: number): Promise<any>;
-  delete(ids: number[]): Promise<any>;
+  deletes(ids: number[]): Promise<any>;
 }
 
 @EntityRepository()
@@ -39,7 +39,7 @@ export abstract class BaseService<TEntity extends ObjectLiteral>
     return { status: "success", result };
   }
 
-  async delete(ids: number[]): Promise<any> {
+  async deletes(ids: number[]): Promise<any> {
     const result = await this.repository.delete(ids);
     return { status: "success", result };
   }
