@@ -3,7 +3,7 @@ import {
   compare,
   generateAccessToken,
   generateRefreshToken,
-} from "../../../utils/bcrypt.util";
+} from "../../../utils/core/bcrypt.util";
 
 export class AuthFlow {
   private userService: IUser;

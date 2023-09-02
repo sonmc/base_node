@@ -1,4 +1,4 @@
-import { BaseService, IBaseService } from "services/base.service";
+import { BaseService, IBaseService } from "services/core/base.service";
 import { PermSchema } from "services/schemas/core/perm.schema";
 import { Repository } from "typeorm";
 

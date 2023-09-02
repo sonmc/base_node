@@ -1,12 +1,12 @@
 import * as Koa from "koa";
 import { CrudPermFlow } from "./crud_perm.flow";
-import { permValidate } from "./crud_user.validator";
-import { applySort } from "../../../../utils/ctrl.util";
-import { getRepository } from "typeorm";
-import { STATUS_400 } from "../../../../utils/const.variable";
+import { permValidate } from "./crud_user.validator"; 
+import { getRepository } from "typeorm"; 
 import { PermService } from "services/core/perm.service";
 import { PermSchema } from "services/schemas/core/perm.schema";
 import { CrudPermPresenter } from "./crud_perm.presenter";
+import { applySort } from "utils/core/ctrl.util";
+import { STATUS_400 } from "utils/core/const.variable";
 
 class CrudPermCtrl {
   async list(ctx: Koa.Context, _next: Koa.Next) {

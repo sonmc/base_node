@@ -1,5 +1,5 @@
 import { IUser } from "../../../../services/core/user.service";
-import { compare, getUserNameByToken, hash } from "../../../../utils/bcrypt.util";
+import { compare, getUserNameByToken, hash } from "../../../../utils/core/bcrypt.util";
 
 export class ChangePasswordFlow {
   private userService: IUser;

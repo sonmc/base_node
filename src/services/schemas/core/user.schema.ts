@@ -8,7 +8,7 @@ import {
 } from "typeorm";
 import { BaseSchema } from "../base.schema";
 import { GroupSchema } from "./group.schema";
-import { hash } from "../../../utils/bcrypt.util";
+import { hash } from "../../../utils/core/bcrypt.util";
 
 @Entity({ name: "users" })
 export class UserSchema extends BaseSchema {

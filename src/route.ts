@@ -1,11 +1,13 @@
 import * as Koa from "koa";
-
-import { PROFILE_TYPE } from "./utils/const.variable";
+ 
 import authCtrl from "./use-cases/core/auth/auth.ctrl";
-import get_currentCtrl from "./use-cases/core/user/get-current/get_current.ctrl"; 
-import crud_userCtrl from "./use-cases/core/user/crud/crud_user.ctrl";
-import change_passwordCtrl from "./use-cases/core/user/change-password/change_password.ctrl";
-import groupCtrl from "./use-cases/core/group/group.ctrl";
+import getCurrentCtrl from "./use-cases/core/user/get-current/get_current.ctrl"; 
+import crudUserCtrl from "./use-cases/core/user/crud/crud_user.ctrl";
+import changePasswordCtrl from "./use-cases/core/user/change-password/change_password.ctrl";
+ 
+import { PROFILE_TYPE } from "utils/core/const.variable";
+import crudGroupCtrl from "use-cases/core/group/crud/crud_group.ctrl";
+
 
 type RouteItem = {
   path: string;
@@ -17,20 +19,20 @@ const get_routes: RouteItem[] = [
   {
     name: "[]",
     path: "/users/get-current-user",
-    ctrl: get_currentCtrl.get,
+    ctrl: getCurrentCtrl.get,
   },
   { name: "[]", path: "/auth/refresh-token", ctrl: authCtrl.refreshToken },
   { name: "[]", path: "/auth/logout", ctrl: authCtrl.logout },
   {
     name: JSON.stringify([PROFILE_TYPE.ADMIN]),
     path: "/roles",
-    ctrl: groupCtrl.list,
+    ctrl: crudGroupCtrl.list,
   },
 
   {
     name: JSON.stringify([PROFILE_TYPE.ADMIN]),
     path: "/users",
-    ctrl: crud_userCtrl.list,
+    ctrl: crudUserCtrl.list,
   },
 ];
 
@@ -39,19 +41,19 @@ const post_routes: RouteItem[] = [
   {
     name: JSON.stringify([PROFILE_TYPE.SUPPER_ADMIN, PROFILE_TYPE.ADMIN]),
     path: "/users",
-    ctrl: crud_userCtrl.create,
+    ctrl: crudUserCtrl.create,
   },
   {
     name: JSON.stringify([]),
     path: "/users/change-password",
-    ctrl: change_passwordCtrl.changePassword,
+    ctrl: changePasswordCtrl.changePassword,
   },
 ];
 const delete_routes: RouteItem[] = [
   {
     name: JSON.stringify([PROFILE_TYPE.ADMIN]),
     path: "/users",
-    ctrl: crud_userCtrl.delete,
+    ctrl: crudUserCtrl.delete,
   },
 ];
 

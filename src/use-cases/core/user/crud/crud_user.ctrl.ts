@@ -1,12 +1,12 @@
 import * as Koa from "koa";
 import UserFlow from "./crud_user.flow";
 import { CrudUserPresenter } from "./crud_user.presenter";
-import { userValidate } from "./crud_user.validator";
-import { applyPagination, applySort } from "../../../../utils/ctrl.util";
+import { userValidate } from "./crud_user.validator"; 
 import { UserService } from "../../../../services/core/user.service";
 import { getRepository } from "typeorm";
-import { UserSchema } from "../../../../services/schemas/core/user.schema";
-import { STATUS_400 } from "../../../../utils/const.variable";
+import { UserSchema } from "../../../../services/schemas/core/user.schema"; 
+import { applyPagination, applySort } from "utils/core/ctrl.util";
+import { STATUS_400 } from "utils/core/const.variable";
 
 class CrudUserCtrl {
   async list(ctx: Koa.Context, _next: Koa.Next) {

@@ -1,6 +1,8 @@
-import { GroupService } from "../../../services/core/group.service";
+import { GroupService } from "../../../../services/core/group.service";
 
-export class GroupFlow {
+ 
+
+export class CrudGroupFlow {
   private groupService: GroupService;
   constructor(_groupService: GroupService) {
     this.groupService = _groupService;
@@ -11,4 +13,4 @@ export class GroupFlow {
   }
 }
 
-export default GroupFlow;
+export default CrudGroupFlow;

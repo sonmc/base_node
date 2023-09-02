@@ -5,21 +5,14 @@ import { createConnection } from "typeorm";
 import bodyParser from "koa-bodyparser";
 import cors from "@koa/cors";
 import koaBody from "koa-body";
-import AWS from "aws-sdk";
 import typeOrmConfig from "./database/typeorm.config";
-import "reflect-metadata";
 import { AuthMiddleware } from "use-cases/middleware";
+import "reflect-metadata";
 
 const app = new Koa();
 const router = new Router({
   prefix: "/api",
-});
-
-AWS.config.update({
-  accessKeyId: "AKIAV4VZDG5MDKDDLFVM",
-  secretAccessKey: "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",
-});
-
+}); 
 createConnection(typeOrmConfig)
   .then(async () => {
 

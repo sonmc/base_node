@@ -1,4 +1,4 @@
-import { BaseService, IBaseService } from "../../services/base.service";
+import { BaseService, IBaseService } from "./base.service";
 import { GroupSchema } from "../../services/schemas/core/group.schema";
 import { Repository } from "typeorm";
 

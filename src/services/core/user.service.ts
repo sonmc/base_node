@@ -1,6 +1,6 @@
 import { UserSchema } from "../../services/schemas/core/user.schema";
-import { BaseService, IBaseService } from "../base.service";
-import { hash } from "../../utils/bcrypt.util";
+import { BaseService, IBaseService } from "./base.service";
+import { hash } from "../../utils/core/bcrypt.util";
 import { Repository } from "typeorm";
 
 export interface IUser extends IBaseService<UserSchema> {

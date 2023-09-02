@@ -1,5 +1,5 @@
 import { createConnection } from "typeorm";
-import { PASSWORD_DEFAULT } from "../../utils/const.variable";
+import { PASSWORD_DEFAULT } from "../../utils/core/const.variable";
 import typeOrmConfig from "../../database/typeorm.config";
 import { PermSchema } from "../../services/schemas/core/perm.schema";
 import { UserSchema } from "../../services/schemas/core/user.schema";

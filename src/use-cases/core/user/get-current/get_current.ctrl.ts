@@ -1,10 +1,10 @@
 import * as Koa from "koa";
 import GetCurrentUserFlow from "./get-current.flow";
 import { GetCurrentUserPresenter } from "./get-current.presenter";
-import { UserService } from "../../../../services/core/user.service";
-import { ACCESS_TOKEN, INVALID_TOKEN } from "../../../../utils/const.variable";
+import { UserService } from "../../../../services/core/user.service"; 
 import { getRepository } from "typeorm";
 import { UserSchema } from "../../../../services/schemas/core/user.schema";
+import { ACCESS_TOKEN, INVALID_TOKEN } from "utils/core/const.variable";
 
 class GetCurrentUserCtrl {
   async get(ctx: Koa.Context, _next: Koa.Next) {

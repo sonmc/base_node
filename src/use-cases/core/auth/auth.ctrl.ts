@@ -1,11 +1,11 @@
 import * as Koa from "koa";
 import { AuthPresenter } from "./auth.presenter";
 import { AuthFlow } from "./auth.flow";
-import { authValidate } from "./auth.validator";
-import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../../utils/const.variable";
+import { authValidate } from "./auth.validator"; 
 import { UserService } from "../../../services/core/user.service";
 import { getRepository } from "typeorm";
 import { UserSchema } from "../../../services/schemas/core/user.schema";
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../../utils/core/const.variable";
 
 export class AuthCtrl {
   async login(ctx: Koa.Context, _next: Koa.Next) {
