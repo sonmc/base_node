@@ -5,7 +5,7 @@
   "main": "./src/index.ts",
   "scripts": { 
     "dev": "nodemon",
-    "build": "tsc && copy .env dist\\",
+    "build": "tsc",
     "generate": "ts-node ./node_modules/typeorm/cli.js migration:generate -n migration -f src/database/typeorm.config.ts",
     "migrate": "ts-node ./node_modules/typeorm/cli.js migration:run -f src/database/typeorm.config.ts",
     "sync-all-router": "ts-node src/database/seed/sync_all_router.ts",
