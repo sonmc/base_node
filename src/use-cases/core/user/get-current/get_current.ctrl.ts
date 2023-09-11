@@ -1,25 +1,29 @@
-import * as Koa from "koa";
-import GetCurrentUserFlow from "./get-current.flow";
-import { GetCurrentUserPresenter } from "./get-current.presenter";
-import { UserService } from "../../../../services/core/user.service"; 
-import { getRepository } from "typeorm";
-import { UserSchema } from "../../../../services/schemas/core/user.schema";
-import { ACCESS_TOKEN, INVALID_TOKEN } from "utils/core/const.variable";
+import * as Koa from 'koa';
+import GetCurrentUserFlow from './get-current.flow';
+import { GetCurrentUserPresenter } from './get-current.presenter';
+import { UserService } from '../../../../services/core/user.service';
+import { getRepository } from 'typeorm';
+import { UserSchema } from '../../../../services/schemas/core/user.schema';
+import {
+  ACCESS_TOKEN,
+  INVALID_TOKEN,
+} from '../../../../utils/core/const.variable';
 
 class GetCurrentUserCtrl {
   async get(ctx: Koa.Context, _next: Koa.Next) {
     const flow = new GetCurrentUserFlow(
-      new UserService(getRepository(UserSchema))
+      new UserService(getRepository(UserSchema)),
     );
-    const access_token = ctx.cookies.get(ACCESS_TOKEN) || "";
+    const access_token = ctx.cookies.get(ACCESS_TOKEN) || '';
     const { status, result } = await flow.getCurrentUser(access_token);
-    if (status == "error") {
+    if (status == 'error') {
       ctx.status = 400;
       ctx.body = INVALID_TOKEN;
     }
     const user = result;
     const response = GetCurrentUserPresenter.presentItem(user);
     if (user) {
+      ctx.status = 200;
       ctx.body = response;
     } else {
       ctx.status = 400;

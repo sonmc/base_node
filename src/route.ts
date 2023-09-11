@@ -5,8 +5,8 @@ import getCurrentCtrl from "./use-cases/core/user/get-current/get_current.ctrl";
 import crudUserCtrl from "./use-cases/core/user/crud/crud_user.ctrl";
 import changePasswordCtrl from "./use-cases/core/user/change-password/change_password.ctrl";
  
-import { PROFILE_TYPE } from "utils/core/const.variable";
-import crudGroupCtrl from "use-cases/core/group/crud/crud_group.ctrl";
+import { PROFILE_TYPE } from "./utils/core/const.variable";
+import crudGroupCtrl from "./use-cases/core/group/crud/crud_group.ctrl";
 
 
 type RouteItem = {

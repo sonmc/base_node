@@ -25,7 +25,7 @@ export abstract class BaseService<TEntity extends ObjectLiteral>
   }
 
   async findAll(): Promise<any> {
-    const result = await this.repository.find();
+    const result = await this.repository.createQueryBuilder();
     return { status: "success", result };
   }
 

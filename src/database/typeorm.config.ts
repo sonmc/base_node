@@ -3,7 +3,9 @@ import { PermSchema } from "../services/schemas/core/perm.schema";
 import { UserSchema } from "../services/schemas/core/user.schema";
 import { UserGroupSchema } from "../services/schemas/core/users-groups.schema";
 import { ConnectionOptions } from "typeorm";
+require('dotenv').config();
 
+console.log(process.env.DB_HOST);
 const typeOrmConfig: ConnectionOptions = {
   type: "mysql",
   host: process.env.DB_HOST,

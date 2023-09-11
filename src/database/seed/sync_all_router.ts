@@ -3,6 +3,7 @@ import { createConnection } from "typeorm";
 import typeOrmConfig from "../../database/typeorm.config";
 import { PermSchema } from "../../services/schemas/core/perm.schema";
 
+
 async function seed() {
   try {
     const connection = await createConnection(typeOrmConfig);

@@ -3,7 +3,7 @@ import ChangePasswordFlow from "./change_password.flow";
 import { getRepository } from "typeorm";
 import { UserSchema } from "../../../../services/schemas/core/user.schema"; 
 import { UserService } from "../../../../services/core/user.service";
-import { ACCESS_TOKEN, INVALID_TOKEN } from "utils/core/const.variable";
+import { ACCESS_TOKEN, INVALID_TOKEN } from "../../../../utils/core/const.variable";
 
 class ChangePasswordCtrl {
   async changePassword(ctx: Koa.Context, _next: Koa.Next) {

@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "./src/index.ts",
-  "scripts": {
-    "build": "tsc",
+  "scripts": { 
+    "dev": "nodemon",
+    "build": "tsc && copy .env dist\\",
     "generate": "ts-node ./node_modules/typeorm/cli.js migration:generate -n migration -f src/database/typeorm.config.ts",
     "migrate": "ts-node ./node_modules/typeorm/cli.js migration:run -f src/database/typeorm.config.ts",
-    "sync-all-router": "node dist/database/seed/sync_all_router.js",
-    "seed": "node dist/database/seed/seeding.js",
-    "start": "nodemon"
+    "sync-all-router": "ts-node src/database/seed/sync_all_router.ts",
+    "seed": "ts-node src/database/seed/seeding.ts"
   },
   "author": "sonmc",
   "license": "ISC",
